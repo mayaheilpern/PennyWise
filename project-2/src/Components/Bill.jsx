@@ -33,34 +33,36 @@ export default function Bill() {
     setDate();
   }
 
-  // let total = data.reduce((a, v) => a = a + v.fields.amount, 0);
+  let total = data.reduce((a, v) => a = a + v.fields.amount, 0);
 
   return (
-    <div>
-      <h1>Bills</h1>
-      <button onClick={() => setShow(true)}>Add New Bill</button>
-      <Add trigger={show}
-        name={name}
-        setName={setName}
-        amount={amount}
-        setAmount={setAmount}
-        date={date}
-        setDate={setDate}
-        handleSubmit={handleSubmit}
-        show={show}
-        setShow={setShow}
-      />
+    <>
+      <div className="flex justify-between px-5 py-4">
+        <h1 className="text-sky-500 text-3xl">Bills</h1>
+        <button className="bg-sky-500 rounded px-2 text-white" onClick={() => setShow(true)}>Add New Bill</button>
+        <Add
+          name={name}
+          setName={setName}
+          amount={amount}
+          setAmount={setAmount}
+          date={date}
+          setDate={setDate}
+          handleSubmit={handleSubmit}
+          show={show}
+          setShow={setShow}
+        />
+      </div>
       {loading ? (
         <span>Loading...</span>
         ) : (
           <>
             <Tables data={data} />
-            {/* <h3 className="text-center">{`Total $${total}`}</h3> */}
+            <h3 className="text-center">{`Total $${total}`}</h3>
             <PieChart data={data} title={"Bills"} />
             <div className="p-8">Hello World</div>
           </>
         )
       }
-    </div>
+    </>
   )
 }
