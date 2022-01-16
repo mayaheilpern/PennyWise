@@ -1,3 +1,4 @@
+import { useState, useEffect } from "react";
 import { Routes, Route } from "react-router-dom";
 import Navbar from "./Components/Navbar";
 import DropdownNav from "./Components/DropdownNav";
@@ -7,10 +8,29 @@ import Expense from "./Components/Expense";
 import Other from "./Components/Other";
 
 function App() {
+
+  const [toggle, setToggle] = useState(false);
+
+  const open = () => {
+    setToggle(!toggle);
+  }
+
+  useEffect(() => {
+    const hideMenu = () => {
+      if (window.innerWidth >= 768 && toggle === true) {
+        setToggle(false)
+      }
+    }
+    window.addEventListener("resize", hideMenu)
+    return () => {
+      window.removeEventListener("resize", hideMenu)
+    }
+  });
+
   return (
     <>
-      <Navbar />
-      <DropdownNav />
+      <Navbar open={open}/>
+      <DropdownNav open={open} toggle={toggle}/>
       <Routes>
         <Route path="/" element={<Home />} />
         <Route path="/bill" element={<Bill />} />
