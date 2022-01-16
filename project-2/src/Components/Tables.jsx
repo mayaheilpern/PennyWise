@@ -1,25 +1,32 @@
 export default function Tables({ data }) {
 
+let total = data.reduce((a, v) => a = a + v.fields.amount, 0);
+
   return (
-    <table className="w-full md:w-8/12">
-      <thead className="bg-gray-50 border-b-3 border-gray-800">
-        <tr className="pl-10">
-          <th className="p-3 text-sm font-semibold tracking-wide text-center">Name</th>
-          <th className="p-3 text-sm font-semibold tracking-wide text-center">Amount</th>
-          <th className="p-3 text-sm font-semibold tracking-wide text-center">Date</th>
-        </tr>
-      </thead>
-      <tbody>
-        {data.map((i) => {
-          return (
-            <tr key={i.id} className="hover:bg-gray-50 pl-10 border-b-10 border-gray-900">
-              <td className="text-center p-3 text-sm">{i.fields.name}</td>
-              <td className="text-center p-3 text-sm">{`$${i.fields.amount}`}</td>
-              <td className="text-center p-3 text-sm">{i.fields.date}</td>
-            </tr>
-          )
-        })}
-      </tbody>
-    </table>
+    <div className="rounded-lg shadow-3xl">
+      <table className="w-full md:w-8/12 border-collapse border border-slate-500">
+        <thead>
+          <tr className="pl-10">
+            <th className="p-3 text-sm font-bold tracking-wide text-center border border-slate-600">Name</th>
+            <th className="p-3 text-sm font-bold tracking-wide text-center border border-slate-600">Amount</th>
+            <th className="p-3 text-sm font-bold tracking-wide text-center border border-slate-600">Date</th>
+          </tr>
+        </thead>
+        <tbody>
+          {data.map((i) => {
+            return (
+              <tr key={i.id} className="hover:bg-gray-50 pl-10 border border-slate-700">
+                <td className="text-center p-3 text-sm border border-slate-700">{i.fields.name}</td>
+                <td className="text-center p-3 text-sm border border-slate-700">{`$${i.fields.amount}`}</td>
+                <td className="text-center p-3 text-sm border border-slate-700">{i.fields.date}</td>
+              </tr>
+            )
+          })}
+        </tbody>
+      </table>
+      <h3 className="">{`Total $${total}`}</h3>
+    </div>
   )
 }
+//border-b border-black
+// border-b-4 border-black

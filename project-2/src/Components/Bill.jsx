@@ -32,7 +32,7 @@ export default function Bill() {
     setDate();
   }
 
-  let total = data.reduce((a, v) => a = a + v.fields.amount, 0);
+  // let total = data.reduce((a, v) => a = a + v.fields.amount, 0);
 
   return (
     <div>
@@ -54,7 +54,7 @@ export default function Bill() {
         ) : (
           <>
             <Tables data={data} />
-            <h3 className="text-center">{`Total $${total}`}</h3>
+            {/* <h3 className="text-center">{`Total $${total}`}</h3> */}
           </>
         )
       }
