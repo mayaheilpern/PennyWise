@@ -2,6 +2,7 @@ import { useState, useEffect } from 'react';
 import api from "../services/bill";
 import Add from './Add';
 import Tables from "./Tables";
+import PieChart from './PieChart';
 
 export default function Bill() {
 
@@ -55,6 +56,8 @@ export default function Bill() {
           <>
             <Tables data={data} />
             {/* <h3 className="text-center">{`Total $${total}`}</h3> */}
+            <PieChart data={data} title={"Bills"} />
+            <div className="p-8">Hello World</div>
           </>
         )
       }
