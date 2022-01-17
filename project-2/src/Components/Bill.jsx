@@ -34,11 +34,6 @@ export default function Bill() {
     setDate();
   }
 
-  // const handleDelete = async () => {
-  //   const deleteURL = `${api}${data.id}`;
-  //   await axios.delete(deleteURL);
-  // }
-
   return (
     <>
       <div className="flex justify-between px-5 py-4">
