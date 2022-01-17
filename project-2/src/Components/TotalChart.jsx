@@ -6,7 +6,12 @@ export default function TotalChart({totalBill, totalExpense, totalOther}) {
     labels: ["Bills", "Expenses", "Other Charges"],
     dataLabels: {
       enabled: false
-    }
+    },
+    theme: {
+      monochrome: {
+        enabled: true
+      }
+    },
   }
 
   const series = [totalBill, totalExpense, totalOther];
@@ -17,6 +22,7 @@ export default function TotalChart({totalBill, totalExpense, totalOther}) {
         type="pie"
         options={options}
         series={series}
+        className="w-auto"
       />
     </>
   )

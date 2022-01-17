@@ -43,7 +43,7 @@ export default function PieChart({ data, title }) {
       options={options}
       series={series}
       type="pie"
-      width="380"
+      className="w-auto"
     />
   )
 }
