@@ -6,24 +6,24 @@ import Tables from "./Tables";
 import PieChart from './PieChart';
 import TotalChart from './TotalChart';
 
-export default function Bill() {
+export default function Bill({billData, expenseData, otherData}) {
 
   const [data, setData] = useState([]);
-  const [loading, setLoading] = useState(true);
+  // const [loading, setLoading] = useState(false);
   const [name, setName] = useState("");
   const [amount, setAmount] = useState("");
   const [date, setDate] = useState();
   const [show, setShow] = useState(false);
 
-  useEffect(() => {
-    const request = async () => {
-      setLoading(true);
-      const res = await api.get();
-      setData(res.data.records);
-      setLoading(false);
-    }
-    request();
-  }, []);
+  // useEffect(() => {
+  //   const request = async () => {
+  //     setLoading(true);
+  //     const res = await api.get();
+  //     setData(res.data.records);
+  //     setLoading(false);
+  //   }
+  //   request();
+  // }, []);
 
   const handleSubmit = async (e) => {
     e.preventDefault();
@@ -35,7 +35,9 @@ export default function Bill() {
     setDate();
   }
 
-  let totalBill = data.reduce((a, v) => a = a + v.fields.amount, 0);
+  let totalBill = billData.reduce((a, v) => a = a + v.fields.amount, 0);
+  let totalExpense = expenseData.reduce((a, v) => a = a + v.fields.amount, 0);
+  let totalOther = otherData.reduce((a, v) => a = a + v.fields.amount, 0);
 
   return (
     <>
@@ -54,20 +56,20 @@ export default function Bill() {
           setShow={setShow}
         />
       </div>
-      {loading ? (
+      {/* {loading ? (
         <span>Loading...</span>
-        ) : (
+        ) : ( */}
           <div className="md:grid md:grid-cols-3">
-            <Tables data={data} total={totalBill} />
+            <Tables data={billData} total={totalBill} />
             <div className="p-5">
               <div className="rounded-lg shadow-2xl">
-                <PieChart className="items-center" data={data} title={"Bills"} />
-                <TotalChart totalBill={totalBill} />
+                <PieChart className="items-center" data={billData} title={"Bills"} />
+                <TotalChart totalBill={totalBill} totalExpense={totalExpense} totalOther={totalOther}/>
               </div>
             </div>
           </div>
-        )
-      }
+        {/* ) */}
+      {/* } */}
     </>
   )
 }

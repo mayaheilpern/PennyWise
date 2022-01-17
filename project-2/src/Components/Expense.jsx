@@ -5,7 +5,7 @@ import Tables from "./Tables";
 import PieChart from './PieChart';
 import TotalChart from './TotalChart';
 
-export default function Bill() {
+export default function Bill({billData, expenseData, otherData}) {
 
   const [data, setData] = useState([]);
   const [loading, setLoading] = useState(true);
@@ -14,15 +14,15 @@ export default function Bill() {
   const [date, setDate] = useState();
   const [show, setShow] = useState(false);
 
-  useEffect(() => {
-    const request = async () => {
-      setLoading(true);
-      const res = await api.get();
-      setData(res.data.records);
-      setLoading(false);
-    }
-    request();
-  }, []);
+  // useEffect(() => {
+  //   const request = async () => {
+  //     setLoading(true);
+  //     const res = await api.get();
+  //     setData(res.data.records);
+  //     setLoading(false);
+  //   }
+  //   request();
+  // }, []);
 
   const handleSubmit = async (e) => {
     e.preventDefault();
@@ -34,7 +34,9 @@ export default function Bill() {
     setDate();
   }
 
-  let totalExpense = data.reduce((a, v) => a = a + v.fields.amount, 0);
+  let totalBill = billData.reduce((a, v) => a = a + v.fields.amount, 0);
+  let totalExpense = expenseData.reduce((a, v) => a = a + v.fields.amount, 0);
+  let totalOther = otherData.reduce((a, v) => a = a + v.fields.amount, 0);
 
   return (
     <>
@@ -53,20 +55,20 @@ export default function Bill() {
           setShow={setShow}
         />
       </div>
-      {loading ? (
+      {/* {loading ? (
         <span>Loading...</span>
-        ) : (
+        ) : ( */}
           <div className="md:grid md:grid-cols-3">
-            <Tables data={data} total={totalExpense} />
+            <Tables data={expenseData} total={totalExpense} />
             <div className="p-5">
               <div className="rounded-lg shadow-2xl">
-                <PieChart className="items-center" data={data} title={"Expenses"} />
-                <TotalChart totalExpense={totalExpense}/>
+                <PieChart className="items-center" data={expenseData} title={"Expenses"} />
+                <TotalChart totalBill={totalBill} totalExpense={totalExpense} totalOther={totalOther}/>
               </div>
             </div>
           </div>
-        )
-      }
+        {/* )
+      } */}
     </>
   )
 }
