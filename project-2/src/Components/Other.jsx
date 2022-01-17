@@ -3,6 +3,7 @@ import api from "../services/other";
 import Add from './Add';
 import Tables from "./Tables";
 import PieChart from './PieChart';
+import TotalChart from './TotalChart';
 
 export default function Bill() {
 
@@ -56,8 +57,13 @@ export default function Bill() {
         <span>Loading...</span>
         ) : (
           <div className="md:grid md:grid-cols-3">
-            <Tables data={data} total={totalOther}/>
-            <PieChart className="items-center" data={data} title={"Other Charges"} />
+            <Tables data={data} total={totalOther} />
+            <div className="p-5">
+              <div className="rounded-lg shadow-2xl">
+                <PieChart className="items-center" data={data} title={"Other Charges"} />
+                <TotalChart totalOther={totalOther} />
+              </div>
+            </div>
           </div>
         )
       }

@@ -7,20 +7,23 @@ export default function PieChart({ data, title }) {
 
   const options = {
     labels: name,
+    dataLabels: {
+      enabled: false
+    },
     theme: {
       monochrome: {
         enabled: true
       }
     },
-    dataLabels: {
-      formatter(val, opts) {
-        const name = opts.w.globals.labels[opts.seriesIndex]
-        return [name, val.toFixed(1) + '%']
-      }
-    },
-    legend: {
-      show: false
-    },
+  //   dataLabels: {
+  //     formatter(val, opts) {
+  //       const name = opts.w.globals.labels[opts.seriesIndex]
+  //       return [name, val.toFixed(1) + '%']
+  //     }
+  //   },
+  //   legend: {
+  //     show: false
+  //   },
     title: {
       text: title,
       align: 'center',
@@ -36,15 +39,11 @@ export default function PieChart({ data, title }) {
   const series = amount;
 
   return (
-    <div className="p-5">
-      <div className="rounded-lg shadow-2xl">
-        <Chart
-          options={options}
-          series={series}
-          type="pie"
-          width="380"
-        />
-      </div>
-    </div>
+    <Chart
+      options={options}
+      series={series}
+      type="pie"
+      width="380"
+    />
   )
 }
