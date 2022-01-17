@@ -36,7 +36,7 @@ export default function PieChart({ data, title }) {
   const series = amount;
 
   return (
-    <div className="px-5">
+    <div className="p-5">
       <div className="rounded-lg shadow-2xl">
         <Chart
           options={options}

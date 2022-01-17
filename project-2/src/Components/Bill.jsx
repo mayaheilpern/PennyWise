@@ -1,4 +1,5 @@
 import { useState, useEffect } from 'react';
+// import axios from 'axios';
 import api from "../services/bill";
 import Add from './Add';
 import Tables from "./Tables";
@@ -33,7 +34,10 @@ export default function Bill() {
     setDate();
   }
 
-  let total = data.reduce((a, v) => a = a + v.fields.amount, 0);
+  // const handleDelete = async () => {
+  //   const deleteURL = `${api}${data.id}`;
+  //   await axios.delete(deleteURL);
+  // }
 
   return (
     <>
@@ -55,12 +59,10 @@ export default function Bill() {
       {loading ? (
         <span>Loading...</span>
         ) : (
-          <>
+          <div className="md:grid md:grid-cols-3">
             <Tables data={data} />
-            <h3 className="text-center">{`Total $${total}`}</h3>
-            <PieChart data={data} title={"Bills"} />
-            <div className="p-8">Hello World</div>
-          </>
+            <PieChart className="items-center" data={data} title={"Bills"} />
+          </div>
         )
       }
     </>
