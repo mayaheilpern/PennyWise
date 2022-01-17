@@ -34,6 +34,8 @@ export default function Bill() {
     setDate();
   }
 
+  let totalBill = data.reduce((a, v) => a = a + v.fields.amount, 0);
+
   return (
     <>
       <div className="flex justify-between px-5 py-4">
@@ -55,7 +57,7 @@ export default function Bill() {
         <span>Loading...</span>
         ) : (
           <div className="md:grid md:grid-cols-3">
-            <Tables data={data} />
+            <Tables data={data} total={totalBill}/>
             <PieChart className="items-center" data={data} title={"Bills"} />
           </div>
         )

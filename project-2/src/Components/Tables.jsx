@@ -1,7 +1,4 @@
-export default function Tables({ data }) {
-
-  let total = data.reduce((a, v) => a = a + v.fields.amount, 0);
-
+export default function Tables({ data, total }) {
   return (
     <div className="p-5 col-span-2">
       <div className="rounded-lg shadow-2xl">

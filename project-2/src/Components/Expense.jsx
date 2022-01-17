@@ -33,10 +33,12 @@ export default function Bill() {
     setDate();
   }
 
+  let totalExpense = data.reduce((a, v) => a = a + v.fields.amount, 0);
+
   return (
     <>
       <div className="flex justify-between px-5 py-4">
-        <h1 className="text-sky-500 text-3xl">Bills</h1>
+        <h1 className="text-sky-500 text-3xl">Expenses</h1>
         <button className="bg-sky-500 rounded px-2 text-white" onClick={() => setShow(true)}>Add New Bill</button>
         <Add
           name={name}
@@ -54,7 +56,7 @@ export default function Bill() {
         <span>Loading...</span>
         ) : (
           <div className="md:grid md:grid-cols-3">
-            <Tables data={data} />
+            <Tables data={data} total={totalExpense}/>
             <PieChart className="items-center" data={data} title={"Expenses"} />
           </div>
         )
