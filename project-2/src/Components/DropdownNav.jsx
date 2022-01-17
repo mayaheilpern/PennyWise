@@ -3,7 +3,7 @@ import { Link } from 'react-router-dom';
 export default function({open, toggle}) {
   return (
     <div
-      className={toggle ? "grid grid-rows-5 text-center items-center bg-black text-black" : "hidden"}
+      className={toggle ? "grid grid-rows-5 text-center items-center text-black" : "hidden"}
       onClick={open}
     >
       <Link to="/" className="hover:text-gray-300">Home</Link>
