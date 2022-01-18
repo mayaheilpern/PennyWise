@@ -6,11 +6,6 @@ export default function Navbar({open}) {
     <nav className="text-black">
       <div className="p-5 mx-auto flex justify-between">
         <Link to="/" className="font-bold text-sky-500 flex md:text-4xl text-3xl">
-          <img
-            className="w-12"
-            src="https://www.shareicon.net/data/2016/09/27/835722_business_512x512.png"
-            alt="Penny wise"
-          />
           <h1 className="pt-2 md:pl-2">PennyWyse</h1>
         </Link>
         <div className="hidden md:flex flex space-x-4">
