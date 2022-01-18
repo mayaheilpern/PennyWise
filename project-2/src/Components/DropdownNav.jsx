@@ -1,6 +1,6 @@
 import { Link } from 'react-router-dom';
 
-export default function({open, toggle}) {
+export default function DropdownNav({open, toggle}) {
   return (
     <div
       className={toggle ? "grid grid-rows-5 text-center items-center text-black" : "hidden"}
