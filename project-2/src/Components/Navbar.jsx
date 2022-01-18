@@ -6,7 +6,7 @@ export default function Navbar({open}) {
     <nav className="text-black">
       <div className="p-5 mx-auto flex justify-between">
         <Link to="/" className="font-bold text-sky-500 flex md:text-4xl text-3xl">
-          <h1 className="pt-2 md:pl-2">PennyWyse</h1>
+          <h1 className="pt-2 md:pl-2">Tracker</h1>
         </Link>
         <div className="hidden md:flex flex space-x-4">
           <Link to="/" className="pt-3">Home</Link>
