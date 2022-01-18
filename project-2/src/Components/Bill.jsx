@@ -9,7 +9,7 @@ export default function Bill({billData, expenseData, otherData}) {
 
   const [name, setName] = useState("");
   const [amount, setAmount] = useState("");
-  const [date, setDate] = useState();
+  const [date, setDate] = useState("");
   const [show, setShow] = useState(false);
 
   const handleSubmit = async (e) => {
@@ -19,7 +19,7 @@ export default function Bill({billData, expenseData, otherData}) {
     setShow(false)
     setName("");
     setAmount("");
-    setDate();
+    setDate("");
   }
 
   let totalBill = billData.reduce((a, v) => a = a + v.fields.amount, 0);

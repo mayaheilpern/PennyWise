@@ -30,7 +30,6 @@ export default function Add({
       <input
         required
         id="date"
-        type="text"
         value={date}
         placeholder="Date"
         onChange={(e) => setDate(e.target.value)}
