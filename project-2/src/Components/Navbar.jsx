@@ -14,10 +14,10 @@ export default function Navbar({open}) {
           <h1 className="pt-2 md:pl-2">PennyWyse</h1>
         </Link>
         <div className="hidden md:flex flex space-x-4">
-          <Link to="/" className="hover:text-gray-300 pt-3">Home</Link>
-          <Link to="/bill" className="hover:text-gray-300 pt-3">Bills</Link>
-          <Link to="/expense" className="hover:text-gray-300 pt-3">Expenses</Link>
-          <Link to="/other" className="hover:text-gray-300 pt-3">Other Charges</Link>
+          <Link to="/" className="pt-3">Home</Link>
+          <Link to="/bill" className="pt-3">Bills</Link>
+          <Link to="/expense" className="pt-3">Expenses</Link>
+          <Link to="/other" className="pt-3">Other Charges</Link>
         </div>
         <div className="md:hidden flex cursor-pointer">
           <button onClick={open}>

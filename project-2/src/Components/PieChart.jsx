@@ -1,6 +1,6 @@
 import Chart from "react-apexcharts";
 
-export default function PieChart({ data, title }) {
+export default function PieChart({ data }) {
 
   let name = data.map(names => names.fields.name);
   let amount = data.map(amounts => amounts.fields.amount);
@@ -8,33 +8,24 @@ export default function PieChart({ data, title }) {
   const options = {
     labels: name,
     dataLabels: {
-      enabled: false
+      enabled: true,
+      formatter(val, opts) {
+        return [val.toFixed(1) + '%']
+      },
+      dropShadow: {
+        enabled: true,
+        top: 1,
+        left: 1,
+        blur: 1,
+        color: '#000',
+        opacity: 0.45
+      },
     },
     theme: {
       monochrome: {
         enabled: true
       }
     },
-  //   dataLabels: {
-  //     formatter(val, opts) {
-  //       const name = opts.w.globals.labels[opts.seriesIndex]
-  //       return [name, val.toFixed(1) + '%']
-  //     }
-  //   },
-  //   legend: {
-  //     show: false
-  //   },
-    title: {
-      text: title,
-      align: 'center',
-      margin: 10,
-      style: {
-        fontSize:  '17px',
-        fontWeight:  'bold',
-        fontFamily:  undefined,
-        color:  '#263238'
-      },
-    }
   };
   const series = amount;
 
